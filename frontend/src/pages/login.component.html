@@ -1,0 +1,18 @@
+<body>
+  <div class="navbar">
+    <div class="navbar-brand">      
+        <h1 style="text-align: center;"> 
+            TruthNet: <br> Crowdsourcing URL Verification
+        </h1>
+    </div>
+  </div>
+  
+  <div class="input-container" style="margin-top: 10px;">
+    <form (ngSubmit)="login()">
+      <input type="text" [(ngModel)]="username" name="username" placeholder="Username" required>
+      <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+  
+</body>

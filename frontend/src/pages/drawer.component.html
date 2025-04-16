@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Responsive Sidebar Menu</title>
+        <!-- Linking Google Font link for icons-->
+        <link rel="stylesheet" href="drawer.component.scss">        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />        
+          
+    </head>
+    <body>
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="material-symbols-outlined" style="margin-left: 10px;">
+                    verified_user
+                    </span>
+                <h2>TruthNet</h2>
+            </div>
+            <ul class="sidebar-links">
+                <h4>
+                    <span>Main Menu</span>
+                    <div class="menu-separator"></div>
+                </h4>
+                <li>
+                    <a [routerLink]="['/drawer/content']" routerLinkActive="active">
+                        <span class="material-symbols-outlined">
+                        description
+                        </span>Submit Content URL</a>
+                </li>
+                <li>
+                    <a [routerLink]="['/drawer/vote']" routerLinkActive="active">
+                        <span class="material-symbols-outlined">
+                            person_raised_hand
+                        </span>Vote</a>
+                </li>
+                <li>
+                    <a (click)="logout()" class="logout">
+                        <span class="material-symbols-outlined">
+                        logout
+                        </span>Logout</a>
+                </li>
+                <h4>
+                    <div class="menu-separator"></div>
+                    <span *ngIf="username" style="display: flex; align-items: center; gap: 5px;text-decoration: none;">
+                        <span class="material-symbols-outlined" >
+                        person
+                        </span>
+                        <b>Username</b>: {{ username }}</span>                    
+                </h4>
+            </ul>
+        </aside>
+
+
+        <div class="menu-content">
+            <!-- Dynamic content will be rendered here -->
+            <router-outlet></router-outlet>
+        </div>
+
+    </body>
+
+</html>

@@ -1,0 +1,84 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Sidebar Menu</title>
+    <!-- Linking Google Font link for icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="vote.component.scss">
+</head>
+<body>
+  <div style="display: flex; flex-direction: row; justify-content: space-between;">
+    <div style="display: flex; flex-direction: column;">
+      <h2>Vote content for their accuracy</h2>
+      <h3 style="margin-top: 5px; margin-bottom: 20px;">Select the available voting options and decide if the content is trustworthy<br>
+        - Submit an explanation to back your vote up as well</h3>
+    </div>
+    <div class="oval-legend">
+      <h3 style="margin-left: 10px;">Legend:</h3>
+      <ul>
+        <li><b>Accurate</b>: Factually correct</li>
+        <li><b>Unclear</b>: User might be unsure or the article/site is open to interpretation</li>
+        <li><b>Inaccurate</b>: Factually incorrect, but not necessarily deceptive</li>
+        <li><b>Misleading</b>: Might be technically correct but presented in a way that gives the wrong impression</li>    
+        <li style="color: red; display: flex; align-items: center; gap: 5px;text-decoration: none;">
+          <span class="material-symbols-outlined">
+          priority_high
+          </span>
+          <b>Verdict labels are decided after calculation of all votes</b>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+    <div class="attendance-list">
+        <table>
+          <thead>
+            <tr>
+              <th>URL</th>
+              <th>Description</th>
+              <th>Credibility Score</th>
+              <th>Verdict</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let content of allContent">
+              <tr class="oval-row">
+                <td>{{ content.url }}</td>
+                <td>{{ content.contentText }}</td>
+                <td>{{ content.credibilityScore }}</td>   
+                <td>{{ content.credibilityLabel }}</td>                              
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <div class="vote-options">
+                    <h3 style="margin-right: 10px;">Vote:</h3>
+              
+                    <a class="vote-option" (click)="confirmVote(content.id, 'accurate')">
+                      <span class="material-symbols-outlined">check_circle</span>
+                      <span>Accurate</span>
+                    </a>
+              
+                    <a class="vote-option" (click)="confirmVote(content.id, 'unclear')">
+                      <span class="material-symbols-outlined">psychology_alt</span>
+                      <span>Unclear</span>
+                    </a>
+              
+                    <a class="vote-option" (click)="confirmVote(content.id, 'inaccurate')">
+                      <span class="material-symbols-outlined">cancel</span>
+                      <span>Inaccurate</span>
+                    </a>
+              
+                    <a class="vote-option" (click)="confirmVote(content.id, 'misleading')">
+                      <span class="material-symbols-outlined">error</span>
+                      <span>Misleading</span>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </ng-container>
+                           
+                
+          </tbody>
+        </table>
+      </div>
+</body>
